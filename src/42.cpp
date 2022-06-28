@@ -39,7 +39,7 @@ struct Point
 };
 
 int main(){
-    Point p = { 2, 5};
+    Point p = { 2, 5 };
 
     p.moveDown();
     p.moveRight();
