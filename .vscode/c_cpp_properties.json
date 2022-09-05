@@ -4,6 +4,7 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**"
+                // "/home/ubuntu/Learn_cpp/include/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/g++",
