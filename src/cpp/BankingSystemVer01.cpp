@@ -1,3 +1,5 @@
+// version 0.1
+
 #include <iostream>
 #include <cstring> //strcpy 함수를 사용하기 위해서
 

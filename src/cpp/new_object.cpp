@@ -3,7 +3,7 @@ using namespace std;
 
 class Car{
 public:
-    Car(int n){
+    Car(int n){ // 생성자
         cout << "Car is making" << endl;
         cout << "n :" << n << endl;
     }
