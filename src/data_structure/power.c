@@ -38,6 +38,7 @@ int main(){
     duration_1 = (double)(stop_1 - start_1)/CLOCKS_PER_SEC;
     printf("duration_1 :%f\n", duration_1);
 
+//////
 
     start_2 = clock();
     for(int i=0 ; i<1000000 ; i++){
