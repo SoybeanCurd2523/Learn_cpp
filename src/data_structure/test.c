@@ -20,7 +20,7 @@ int main(){
 
     // char str1[]="sample";
     // char str2[]="simple";
-    // int cmp=strcmp(str1, str2); // str1이 사전순으로 앞 : -1 반환, 뒤 : 1, 같다:0 반환 ?
+    // int cmp = strcmp(str1, str2); // str1이 사전순으로 앞 : -1 반환, 뒤 : 1, 같다:0 반환 ?
     // printf("%d\n", cmp);
 
 //////////////////////
@@ -39,17 +39,14 @@ int main(){
 
 ////////////////
 
-    // int a=10, b=20;
-    // int *ptr;
-
-    // ptr=&a;
-    // printf("%d\n", *ptr);
-    // ptr=&b;
-    // printf("%d\n", *ptr);
-
-////////////
-
     // int a=10;
+    // int arr[3]={1,2,3};
+    // int (*ptr_arr)[3]; // 길이 3인 int형 배열을 가르키는 포인터를 선언. 배열 포인터
+    // ptr_arr = &arr;
+
+    // for(int i=0 ; i<3 ; i++){
+    //     printf("(*ptr_arr)[%d] : %d\n", i, (*ptr_arr)[i]);
+    // }
     // printf("a:%d\n",a);
     // int *ptr=&a;
     // printf("ptr:%d\n",ptr);
@@ -58,23 +55,8 @@ int main(){
     // printf("a:%d\n", a);
     // printf("ptr:%d\n",ptr); // a의 주솟값은 바뀌지 않음.
 
-//////////////////////
-
-    // int a=10;
-    // int *ptr;
-    // ptr=&a;
-
-    // int **ptr_ptr;
-    // ptr_ptr=&ptr;
-    // printf("a:%d\n",a);
-    // printf("&a:%d\n",&a);
-    // printf("ptr:%d\n",ptr);
-    // printf("&ptr:%d\n",&ptr);
-    // printf("ptr_ptr:%d\n",ptr_ptr);
-    // printf("*ptr_ptr:%d\n",*ptr_ptr);
-    // printf("**ptr_ptr:%d\n",**ptr_ptr);
-
 /////////////////////
+
     // int arr[10]={1,2,3,4,5,6,7,8,9,10};
 
     // printf("arr:%d\n", arr);  // arr = &arr[0]이다.
@@ -85,6 +67,7 @@ int main(){
     // }
 
 /////////////
+
     // int arr[10]={1,2,3,4,5,6,7,8,9,10};
     // for(int i=0; i<10; i++){
     //     printf("%d ", arr[i]);
@@ -100,19 +83,23 @@ int main(){
 
 ///////////////////
 
-    // int arr[3] =  {1,2,3};
-    // printf("arr:%d\n", arr);
-    // printf("arr+1:%d\n", arr+1);
+    int arr[3] =  {1,2,3};
+    printf("arr:%d\n", arr);
+    printf("arr+1:%d\n", arr+1);
 
-    // printf("&arr:%d\n", &arr);
-    // printf("&arr+1:%d\n", &arr + 1);
+    printf("&arr:%d\n", &arr);
+    printf("&arr+1:%d\n", &arr + 1);
 
 ////////////////
-    int arr[3]={1,2,3};
-    int (*ptr_arr)[3]; // 길이 3인 int형 배열을 가르키는 포인터를 선언. 배열 포인터
-    ptr_arr = &arr;
 
-    for(int i=0 ; i<3 ; i++){
-        printf("%d\n", (*ptr_arr)[i]);
-    }
+    // int arr[3]={1,2,3};
+    // int (*ptr_arr)[3]; // 길이 3인 int형 배열을 가르키는 포인터를 선언. 배열 포인터
+    // ptr_arr = &arr;
+
+    // for(int i=0 ; i<3 ; i++){
+    //     printf("%d\n", (*ptr_arr)[i]);
+    // }
+
+/////////////////
+
 }

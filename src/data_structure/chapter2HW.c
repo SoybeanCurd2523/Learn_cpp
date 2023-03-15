@@ -59,21 +59,36 @@
 // }
 
 
-// 문제3
+// 문제4
+// arr+i = &arr[i]
+// *(arr + n - 1) = arr[n-1]
 
-int N;
-void Maxarr(int &arr[]){
-    printf("%d", N);
+int Maxarr(int *arr, int n){
+    printf("n:%d\n", n);
+    for(int i=0 ; i<n ; i++){
+        printf("arr[%d] :%d\n", i, arr[i]);
+    }
+
+    if(n == 1)
+        return *arr; // *arr = *(&arr[0]) = arr[0]
+
+    else{
+
+        if(*(arr+n-1) > Maxarr(arr, n-1))
+            return *(arr+n-1);
+        else
+            return Maxarr(arr, n-1);
+    }
 }
 
 int main(){
+    int n;
+    scanf("%d", &n);
 
-    scanf("%d", &N);
-
-    int arr[N] = {0};
-    for(int i=0 ; i<N; i++){
+    int arr[n] = {0};
+    for(int i=0 ; i<n; i++){
         scanf("%d", &arr[i]);
     }
-    // printf("%d\n", Maxarr(&arr));
-    Maxarr(arr);
+
+    printf("Max : %d\n", Maxarr(arr, n));
 }
