@@ -18,7 +18,7 @@ void hanoi_tower(int n, char from, char tmp, char to){
 }
 
 int main(){
-    hanoi_tower(4, 'A', 'B', 'C');
+    hanoi_tower(2, 'A', 'B', 'C');
     printf("cnt : %d\n", cnt);
     return 0;
 }

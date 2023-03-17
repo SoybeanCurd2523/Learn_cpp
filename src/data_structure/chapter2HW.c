@@ -59,36 +59,50 @@
 // }
 
 
-// 문제4
-// arr+i = &arr[i]
-// *(arr + n - 1) = arr[n-1]
+// // 문제4
+// // arr+i = &arr[i]
 
-int Maxarr(int *arr, int n){
-    printf("n:%d\n", n);
-    for(int i=0 ; i<n ; i++){
-        printf("arr[%d] :%d\n", i, arr[i]);
-    }
+// int Maxarr(int *arr, int n){
 
-    if(n == 1)
-        return *arr; // *arr = *(&arr[0]) = arr[0]
+//     if(n == 1)
+//         return *arr; // *arr = *(&arr[0]) = arr[0]
 
-    else{
+//     else{
 
-        if(*(arr+n-1) > Maxarr(arr, n-1))
-            return *(arr+n-1);
-        else
-            return Maxarr(arr, n-1);
-    }
+//         if(*(arr+n-1) > Maxarr(arr, n-1)) // *(arr + n - 1) = arr[n-1]
+//             return *(arr+n-1);
+//         else
+//             return Maxarr(arr, n-1);
+//     }
+// }
+
+// int main(){
+//     int n;
+//     scanf("%d", &n);
+
+//     int arr[n] = {0};
+//     for(int i=0 ; i<n; i++){
+//         scanf("%d", &arr[i]);
+//     }
+
+//     printf("Max : %d\n", Maxarr(arr, n));
+// }
+
+
+// 문제6
+// 재귀 사용하면 a<b인 경우도 재귀 한번 지나면 a와 b가 바뀌게 되므로, tmp를 이용해 a와 b를 바꿀 필요 없다.
+int gcd(int a, int b){
+    if(b==0)
+        return a;
+    else
+        return gcd(b, a%b);
 }
 
 int main(){
-    int n;
-    scanf("%d", &n);
+    int a, b;
+    scanf("%d %d", &a, &b);
 
-    int arr[n] = {0};
-    for(int i=0 ; i<n; i++){
-        scanf("%d", &arr[i]);
-    }
+    printf("%d\n", gcd(a,b));
 
-    printf("Max : %d\n", Maxarr(arr, n));
+    return 0;
 }
