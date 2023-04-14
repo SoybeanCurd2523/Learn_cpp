@@ -15,7 +15,7 @@ void init(StackType *S) // 스택이 공백상태면은 top은 -1
 }
 
 int isEmpty(StackType *S){ // 스택이 공백상태인지 검사
-    return S->top == -1; // 공백상태이면 1을 반환, 아니면 0 반환
+    return S->top == -1; // 공백상태이면 1을 반환, 아니면 0 반환1
 }
 
 int isFull(StackType *S){ // 스택이 포화상태인지 검사. 
@@ -91,7 +91,7 @@ int main(){
 
 
 
-
+// // 스택의 응용 : 괄호 검사
 // #include <stdio.h>
 // #include <stdlib.h>
 // #include <string.h> // strlen 쓰려고
@@ -119,7 +119,7 @@ int main(){
 // void push(StackType *S, char c){
 //     if(isFull(S))
 //         printf("Full\n");
-//     else{
+//     else{ S->data[S->top] = c;
 //         S->top++;
 //         S->data[S->top] = c;
 //     }
@@ -150,29 +150,33 @@ int main(){
 //     printf("\n");
 // }
 
+// // 입력되는 배열에 괄호가 남아있는지를 검사하는 함수.
+// // 스택에 괄호가 남아있으면 0(거짓) 반환, 그렇지 않으면 1(참) 반환.
 // int check(StackType *S, char str[]){
 //     // StackType S;
 //     // init(&S);
 
 //     char c, t;
-//     int n = strlen(str);
+//     int n = strlen(str); // 배열의 길이 확인
     
 //     for(int i=0 ; i<n ; i++){
 //         c = str[i];
 
-//         if(c == '(' || c == '{' || c == '[')
+//         if(c == '(' || c == '{' || c == '[') // 왼쪽 괄호를 만나면 스택에 삽입함(push)
 //             push(S, c);
-//         else if( c== ')' || c == '}' || c == ']'){
+//         else if( c== ')' || c == '}' || c == ']'){ // 오른쪽 괄호를 만나면
 //             if(isEmpty(S))
-//                 return 0;
-//             else{
-//                 t = pop(S);
-//                 if( (t=='(' && c!=')') || (t=='{' && c!='}') || (t=='[' && c!=']'))
-//                     return 0;
+//                 return 0; 
+//             else{ // 스택이 비어있지 않다면
+//                 t = pop(S); // top 괄호를 삭제하고
+//                 if( (t=='(' && c!=')') || (t=='{' && c!='}') || (t=='[' && c!=']')){ // 삭제한건 왼쪽괄호인데, 배열의 원소가 오른쪽 괄호가 아니라면
+//                     // printf("abcd");
+//                     return 0; // 거짓
+//                 }
 //             }   
 //         }
 //     }
-//     return isEmpty(S);
+//     return isEmpty(S); // 스택이 공백상태이면 1을 반환. 즉 괄호가 안 남아있으므로 참을 반환
 // }
 
 // int main(){
@@ -188,3 +192,4 @@ int main(){
 //         printf("NO\n");
 //     return 0;
 // }
+￼
