@@ -62,14 +62,6 @@ void insert(ListType *L, int pos, element e){
     L->size++;
 }
 
-void print(ListType *L){
-    ListNode *p;
-    for(p=L->head ; p != NULL ; p=p->next) // 마지막 노드가 없을 때까지
-        printf("%c=> ", p->data);
-
-    printf("\b\b\b  \n"); // 마지막에 = > 공백 지우려고
-}
-
 element deleteFirst(ListType *L){ // 리턴값 있어야 함
     if(L->size == 0){ // 에러 체크
         printf("No element. \n");
@@ -115,26 +107,61 @@ element deletePosition(ListType *L, int pos){ // 함수 이름 delete로 하면 
     }
 }
 
+void print(ListType *L){
+    ListNode *p;
+    for(p=L->head ; p != NULL ; p=p->next) // 마지막 노드가 없을 때까지
+        printf("%c=> ", p->data);
+
+    printf("\b\b\b  \n"); // 마지막에 = > 공백 지우려고
+}
+
+// 두 리스트 합치기.
+// 먼저 첫 번째 리스트의 끝으로 간 다음, 마지막 노드의 링크가 두번째 리스트의 첫 번째 노드를 가르키도록 변경.
+// list1이나 list2가  NULL인경우를 처리해주어야함.
+ListType* concat_list(ListType *L1, ListType *L2){  
+    ListNode *p1 = L1->head;
+    ListNode *p2 = L2->head;
+
+    if(L1->head == NULL || L2->head == NULL) return NULL;
+
+    while(p1->next != NULL)
+        p1 = p1->next;    
+    
+    p1->next = p2;
+    return L1;
+}
+
 int main(){
-    ListType L;
-    init(&L);
+    ListType L1;
+    init(&L1);
 
-    insertLast(&L, 'E'); print(&L); 
+    insertFirst(&L1, 'A'); print(&L1);
+    insertFirst(&L1, 'B'); print(&L1);
 
-    insertFirst(&L, 'A'); print(&L);
-    insertFirst(&L, 'B'); print(&L); 
-    printf("size : %d\n", L.size);    
-    getchar();
+    ListType L2;
+    init(&L2);
 
-    insertLast(&L, 'C'); print(&L);
-    insertLast(&L, 'D'); print(&L); getchar();
+    insertFirst(&L2, 'C'); print(&L2);
+    insertFirst(&L2, 'D'); print(&L2);
 
-    insert(&L, 1, 'F'); print(&L);
-    insert(&L, 4, 'G'); print(&L);
-    insert(&L, 8, 'H'); print(&L);
+    print(concat_list(&L1, &L2));
+    
+    // insertLast(&L, 'E'); print(&L); 
 
-    printf("[%c] is deleted. \n", deleteFirst(&L)); print(&L);
-    printf("[%c] is deleted. \n", deletePosition(&L, 3)); print(&L);
+    // insertFirst(&L, 'A'); print(&L);
+    // insertFirst(&L, 'B'); print(&L); 
+    // printf("size : %d\n", L.size);    
+    // getchar();
+
+    // insertLast(&L, 'C'); print(&L);
+    // insertLast(&L, 'D'); print(&L); getchar();
+
+    // insert(&L, 1, 'F'); print(&L);
+    // insert(&L, 4, 'G'); print(&L);
+    // insert(&L, 8, 'H'); print(&L);
+
+    // printf("[%c] is deleted. \n", deleteFirst(&L)); print(&L);
+    // printf("[%c] is deleted. \n", deletePosition(&L, 3)); print(&L);
 
     return 0;
 }

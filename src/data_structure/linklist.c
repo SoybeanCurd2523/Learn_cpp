@@ -1,3 +1,4 @@
+// 내가 안보고 만들어본 단순 연결 리스트
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -65,7 +66,7 @@ void insert(ListType *L, element e, int pos){
 
 void print(ListType *L){
     for(ListNode *p = L->head ; p != NULL ; p=p->next)
-        printf("%c=> ", p->data);
+        printf("%c => ", p->data);
     
     printf("\b\b\b   \n");
 }
@@ -119,24 +120,25 @@ int main(){
     insertFirst(&L, 'A'); print(&L);
     insertFirst(&L, 'B'); print(&L);
 
+    getchar();
+
     insertLast(&L, 'C'); print(&L);
+    insertLast(&L, 'D'); print(&L);
 
-    printf("========\n");
+    getchar();
 
-    printf("size :%d\n", L.size);
-    insert(&L, 'D', 2); print(&L);
-    insert(&L, 'F', 3); print(&L);
+    insert(&L, 'F', 2); print(&L);
+    insert(&L, 'G', 3); print(&L);
     
-    printf("========\n");
+    getchar();
 
-    printf("size :%d\n", L.size);
+    printf("deleted : %c\n", deleteFirst(&L)); print(&L);
+    printf("deleted : %c\n", deleteFirst(&L)); print(&L);
 
-    printf("delete : %c\n", deleteFirst(&L)); print(&L);
+    getchar();
 
-    printf("=======\n");
+    printf("deleted : %c\n", deletePosition(&L, 3)); print(&L);
+    printf("deleted : %c\n", deletePosition(&L, 2)); print(&L);
 
-    printf("delete : %c\n", deletePosition(&L, 3)); print(&L);
-    printf("delete : %c\n", deletePosition(&L, 2)); print(&L);
-    
     return 0;
 }

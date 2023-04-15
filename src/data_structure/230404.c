@@ -1,3 +1,4 @@
+// 선형 큐
 // #include <stdio.h>
 // #include <stdlib.h>
 // #include <time.h>
@@ -8,17 +9,17 @@
 
 // typedef struct
 // {
-//     element data[];
+//     element data[N]; // 1차원 배열로 구현한 선형 큐
 //     int front;
 //     int rear;
 // }QueueType;
 
 // void init(QueueType *Q){
-//     Q->front = Q->rear = -1;
+//     Q->front = Q->rear = -1; // 선형 큐
 // }
 
 // int isFull(QueueType *Q){
-//     return Q->rear = N-1;
+//     return Q->rear == N-1;
 // }
 
 // int isEmpty(QueueType *Q){
@@ -26,7 +27,7 @@
 // }
 
 // void enqueue(QueueType *Q, element e){
-//     if(isFull(Q))
+//     if(isFull(Q)) // // 그냥 isFull 이 아니라 Q를 인자로 넣어줘야 한다.
 //         printf("Full\n");
 //     else{
 //         Q->rear++;
@@ -56,15 +57,21 @@
 //     init(&Q);
 //     srand(time(NULL));
 
-//     for(int i=0 ; i<7 ; i++){
-//         enqueue(&Q, rand() % 26 + 65); // 알파벳 대문자 A~Z의 아스키코드
-//     }
-    
+// // ascii code
+// // A : 65, Z : 90, a : 97, z : 122. 알파벳은 26개임
+// // rand() % 26 = 0~25
+// // 0%26 = 0, 1%26 = 1 ... 25%26 = 25, 26%26 = 0, 27%26 = 1...
+//     for(int i=0 ; i<7 ; i++)
+//         enqueue(&Q, rand() % 26 + 65); // 알파벳 대문자 A~Z의 아스키코드. 65~90
+                                    
 //     print(&Q); getchar();
 
-//     for(int i=0 ; i<4 ; i++){
-//         printf("[%c]", dequeue(&Q)); // 알파벳 대문자 A~Z의 아스키코드
-//     }
+
+//     dequeue(&Q);
+//     dequeue(&Q);
+
+//     print(&Q);
+
 //     printf("\n");
 
 //     return 0;
@@ -73,7 +80,7 @@
 
 
 
-
+// 원형 큐
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -84,13 +91,13 @@ typedef char element; // 애만 바꿔주면 int형 배열, float형 배열 등 
 
 typedef struct
 {
-    element data[];
+    element data[N];
     int front;
     int rear;
 }QueueType;
 
 void init(QueueType *Q){
-    Q->front = Q->rear = 0;
+    Q->front = Q->rear = 0; // 원형 큐
 }
 
 int isFull(QueueType *Q){
@@ -123,7 +130,7 @@ element dequeue(QueueType *Q){
         printf("Empty");
         return 0;
     }
-    Q->front++;
+    Q->front = (Q->front + 1) % N; 
     return Q->data[Q->front];
 }
 
@@ -132,8 +139,7 @@ element peek(QueueType *Q){
         printf("Empty");
         return 0;
     }
-    Q->front++;
-    return Q->data[Q->front];
+    return Q->data[ (Q->front + 1) % N];
 }
 
 int main(){
@@ -147,9 +153,13 @@ int main(){
     
     print(&Q); getchar();
 
-    for(int i=0 ; i<4 ; i++){
-        printf("[%c]", dequeue(&Q)); // 알파벳 대문자 A~Z의 아스키코드
-    }
+
+    printf("delelte : %c \n", dequeue(&Q));
+    printf("delelte : %c \n", dequeue(&Q));
+    printf("delelte : %c \n", dequeue(&Q));
+  
+    print(&Q);
+    
     printf("\n");
 
     return 0;
