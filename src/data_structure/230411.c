@@ -1,3 +1,4 @@
+// 단순 연결 리스트
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -9,7 +10,7 @@ typedef struct ListNode{
 }ListNode;
 
 typedef struct ListType{
-    ListNode *head;
+    ListNode *head; // 단순 연결 리스트
     int size; // 전체 연결리스트의 지금 현시점의 매달려있는 노드의 개수
 }ListType;
 

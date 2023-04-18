@@ -1,3 +1,7 @@
+/* 원형 리스트 : 마지막 노드가 null이 아니라 첫번째 노드를 가르킴
+L->tail : last node
+L->tail->next : first node
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -9,12 +13,12 @@ typedef struct ListNode{
 }ListNode;
 
 typedef struct ListType{
-    ListNode *tail;
+    ListNode *tail; // 원형 리스트
     int size; // 전체 연결리스트의 지금 현시점의 매달려있는 노드의 개수
 }ListType;
 
 void init(ListType *L){
-    L->tail = NULL;
+    L->tail = NULL; // 원형 리스트의 초기화
     L->size = 0;
 }
 
@@ -23,36 +27,36 @@ L->tail : last node
 L->tail->next : first node
 */
 
-void insertLast(ListType *L, element e){
-    ListNode *node = (ListNode*)malloc(sizeof(ListNode)); 
-    node->data = e;
-    node->next = NULL;
-
-    if(L->size == 0){
-        L->tail = node;
-        node->next = L->tail; // 자기가 자기를 가르키는 것
-    }
-        
-    else{
-        node->next = L->tail->next;
-        L->tail->next = node;
-        L->tail = node;
-    }
-    L->size++;
-}
-
 void insertFirst(ListType *L, element e){
     ListNode *node = (ListNode*)malloc(sizeof(ListNode)); 
     node->data = e;
 
     if(L->size == 0){
         L->tail = node;
+        node->next = L->tail // 자기가 자기를 가르키는 것
+    }
+        
+    else{
+        node->next = L->tail->next;
+        L->tail->next = node;
+    }
+    L->size++;
+}
+
+void insertLast(ListType *L, element e){
+    ListNode *node = (ListNode*)malloc(sizeof(ListNode)); 
+    node->data = e;
+    node->next = NULL;
+
+    if(L->size == 0){ // insert 함수가 한 번도 호출이 안 됬을 때
+        L->tail = node;
         node->next = L->tail; // 자기가 자기를 가르키는 것
     }
         
     else{
         node->next = L->tail->next;
         L->tail->next = node;
+        L->tail = node;
     }
     L->size++;
 }
@@ -70,6 +74,8 @@ void insert(ListType *L, int pos, element e){
             p = p->next;
         
         node->data = e;
+        
+        // 순서 주의
         node->next = p->next;
         p->next = node;
     }
@@ -107,10 +113,10 @@ element deleteLast(ListType *L){ // 리턴값 있어야 함
             q=q->next;
         
         q->next = p->next;
-        L->tail;
+        L->tail = q;
     }
     
-    free(q);
+    free(p);
     L->size--;
 
     return e;
@@ -121,7 +127,7 @@ void print(ListType *L){
     ListNode *p = L->tail;
 
     do{ // 조건이 나중에 처리되는 방법 : do-while문
-        printf("%c=> ", p->next->data);
+        printf("%c=> ", p->next->data); // p가 tail이므로 원형리스트의 맨 앞부터 출력하려고 이럼
         p = p->next;
     }while(p != L->tail);
 
@@ -153,8 +159,6 @@ int main(){
 
 
 /* 원형 리스트 : 마지막 노드가 null이 아니라 첫번째 노드를 가르킴
-
-
 L->tail : last node
 L->tail->next : first node
 */
