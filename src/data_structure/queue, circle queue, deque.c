@@ -184,7 +184,15 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define MAX_DEQUE_SIZE 10
+#define MAX_DEQUE_SIZE 10 D->front = D->rear = 0;
+}
+
+int isEmpty(DequeType *D){
+    return D->front == D->rear;
+}
+
+int isFull(DequeType *D){
+    return (D->rear + 1) % MAX_DEQUE_SIZE == D->front;
 
 typedef char element;
 
