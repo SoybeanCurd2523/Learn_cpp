@@ -95,12 +95,7 @@ element deletePosition(ListType *L, int pos){
     if(pos == 1)
         e = deleteFirst(L);
    
-    else{// int isEmpty(QueueType *Q){
-//     if(Q->rear == Q->front)
-//         return 1;
-//     else    
-//         return 0;
-// }
+    else{
         ListNode *p = L->head;
         ListNode *q;
 

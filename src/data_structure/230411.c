@@ -10,7 +10,7 @@ typedef struct ListNode{
 }ListNode;
 
 typedef struct ListType{
-    ListNode *head; // 단순 연결 리스트
+    ListNode *head; // 헤드 포인터
     int size; // 전체 연결리스트의 지금 현시점의 매달려있는 노드의 개수
 }ListType;
 
@@ -37,7 +37,7 @@ void insertLast(ListType *L, element e){
     else{
         ListNode *p;
         for(p=L->head ; p->next != NULL ; p=p->next);
-        
+        // 기존에 NULL이었던 마지막 노드의 next필드를 새로 만드는 node를 지목하게 만듬
         p->next = node;
     }
     
